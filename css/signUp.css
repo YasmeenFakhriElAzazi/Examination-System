@@ -55,7 +55,7 @@ body{
 @media(min-width : 992px){
       
 .form-container{
-    padding-top: 70px;
+    padding-top: 10px;
    
 } 
 .form-container form{
@@ -75,21 +75,29 @@ body{
 }
 
 .main-container{
-    background-image: url(../images/bg.jpg);
+    display: grid;
+    grid-template-columns: repeat(12 , 1fr);
+    height: 100%
+}
+.main-container .image{
+    grid-column: 1/9;
+    background-image: url(../images/hd_4b796e7efe0d75c007f0db60e5da9686_66d199740cea0.jpeg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 100% 60%;
     width: 100%;
     height: 100%; 
-   
 }
+.form{
+    grid-column: 9/13;
 
+}
 .form-container{
     display: flex;
     flex-direction: column;
     text-align: center;
-    margin: auto;
-    width: 50%;
+    width: 100%;
+    margin-top: 15%;
     vertical-align: middle;
 }
 .form-container h2{

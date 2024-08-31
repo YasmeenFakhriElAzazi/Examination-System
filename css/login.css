@@ -20,58 +20,34 @@ body{
 .form-container form{
     width: 90%;
 }
-.form-container form #user-icon{
-    position: relative;
-    top: -40px;
-    left: -85px;
-    }
-    
+.form-container form #user-icon,
 .form-container form #pass-icon{
     position: relative;
     top: -40px;
-    left: -85px;
-    }
+    left: -48%;
+}
+ 
 }
 
-/*Medium*/
-@media(min-width : 769px){
-     
-.form-container{
-    padding-top: 90px;
-   
-} 
-.form-container form{
-    width: 80%;
-
-}
-.form-container form #user-icon{
-    position: relative;
-    top: -40px;
-    left: -170px;
-    }
-}
 
 /*Large*/
-@media(min-width : 992px){
+@media(min-width : 769px){
       
 .form-container{
     padding-top: 70px;
    
 } 
 .form-container form{
-    width: 50%;
+    width: 60%;
 
 }
-.form-container form #user-icon{
+.form-container form #user-icon,
+.form-container form #pass-icon{
     position: relative;
     top: -40px;
-    left: -170px;
+    left: -48%;
     }
-    .form-container form #pass-icon{
-        position: relative;
-        top: -40px;
-        left: -170px;
-        }
+       
 }
 
 .main-container{

@@ -1,61 +1,57 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-*{
+
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Poppins", sans-serif;
 }
-body{
-  
-    height: 100vh;
 
+body {
+    height: 100vh;
 }
-.container{
+
+.container {
     position: relative;
     width: 100%;
     height: 100%;
-
 }
+
 .container::before {
-    /* background-image: url(../images/bg2.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: 100% 60%;
-    width: 100%;
-    height: 100%; */
     content: "";
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-
     background: url('../images/bg.jpg') no-repeat center center;
     background-size: cover;
-    opacity: 0.6; /* Adjust the opacity as needed */
+    opacity: 0.6;
+    /* Adjust the opacity as needed */
     z-index: 0;
 }
-.content{
+
+.content {
     width: 100%;
     display: flex;
     flex-direction: row;
     position: relative;
-
     z-index: 1;
 }
-.sub-body{
+
+.sub-body {
     width: 70%;
     margin: 40px 5%;
     border: 2px solid #59564f;
     padding: 15px;
-    background-color:#dce0e9a7;
+    background-color: #dce0e9a7;
     border-radius: 12px;
     box-shadow: 5px 10px 18px #b1b1b1;
 }
-.timer{
+
+.timer {
     color: white;
-    background: linear-gradient(to right,#405261,#475663,#2c363f );
+    background: linear-gradient(to right, #405261, #475663, #2c363f);
     height: 48px;
     font-size: 24px;
     display: flex;
@@ -63,47 +59,51 @@ body{
     justify-content: center;
     padding: 0 32px;
     position: relative;
-
     z-index: 1;
 }
-.title{
+
+.title {
     color: white;
-    background: linear-gradient(to right,#405261,#475663,#2c363f );
+    background: linear-gradient(to right, #405261, #475663, #2c363f);
     padding: 8px 16px;
-    /* border: 2px solid #2c363f; */
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
 }
-.question{
+
+.question {
     border: 1px solid #2c363f;
     border-bottom-right-radius: 12px;
     border-bottom-left-radius: 12px;
     color: #59564f;
     padding: 16px;
     font-size: 18px;
-    background: linear-gradient(to right,#b9c2d1,#dce0e9,#e6e9ee );
+    background: linear-gradient(to right, #b9c2d1, #dce0e9, #e6e9ee);
 }
-.answer{
+
+.answer {
     color: #59564f;
     margin-top: 16px;
     padding: 8px 16px;
     border: 1px solid #2c363f;
     border-radius: 12px;
-    background: linear-gradient(to right,#b9c2d1,#dce0e9,#e6e9ee );
+    background: linear-gradient(to right, #b9c2d1, #dce0e9, #e6e9ee);
 }
-.buttons{
+
+.buttons {
     padding: 16px 2%;
     display: flex;
     justify-content: space-between;
 }
-button{
+
+button {
     border: 0;
     border-radius: 16px;
     padding: 8px 24px;
-    background: linear-gradient(to right,#405261,#475663,#2c363f );
+    background: linear-gradient(to right, #405261, #475663, #2c363f);
     color: white;
 }
-.side-menu{
+
+.side-menu {
     width: 30%;
     border-left: 1px solid #59564f;
     color: #59564f;
@@ -112,12 +112,14 @@ button{
     text-align: center;
     padding: 0 16px;
 }
-.profile img{
+
+.profile img {
     width: 35%;
     border-radius: 50%;
     margin-bottom: 16px;
 }
-.profile{
+
+.profile {
     width: 100%;
     padding-top: 40px;
     padding-bottom: 16px;

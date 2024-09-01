@@ -3,27 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../css/login.css">
+    <link rel="stylesheet" href="../../css/signUp.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://kit.fontawesome.com/91eada0414.js"></script>
     <title>Examination system</title>
 </head>
 <body>
     <div class="main-container">
+        <div class="image">
+            
+        </div>
         <div class="form">
             <div class="form-container">
-                <h2>Login</h2>
+                <h2>Sign Up</h2>
                 <form>
+                    
                     <input type="text" id="username" name="username" placeholder="User Name" required>
                     <i class="fa-solid fa-user" style="color: #68686a;" id="user-icon"></i>
+                    <span id="userNameFound"></span>
+
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                    <i class="fa-solid fa-user" style="color: #68686a;" id="email-icon"></i>
+                    <span id="emailFound"></span>
+
                     <input type="password" id="password" name="password" placeholder="Password" required>
                     <i class="fa-solid fa-lock" style="color: #68686a;" id="pass-icon"></i>
-                    <button type="submit">Submit</button>
+                    
+                    <input type="password" id="confirm-password" name="password" placeholder="Confirm Password" required>
+                    <i class="fa-solid fa-lock" style="color: #68686a;" id="confirm-pass-icon"></i>
+                   
+                    <button type="button" id="submit">Submit</button>
             
                 </form>
                 <div class="text">
-                    <a href="#">Forget Password?</a>
-                    <a href="../signUp/signUp.html">Sign up</a>
+                    <p>You Already Have Account</p>
+                    <a href="../Login/login.html">Login</a>
                 </div>
              
         
@@ -32,6 +46,8 @@
         </div>
       
     </div>
-    <script></script>
+    <script src="signUp.js"></script>
+    <script src="../Login/login.js"></script>
+    <script src="../auth.js"></script>
 </body>
 </html>

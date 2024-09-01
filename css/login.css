@@ -114,3 +114,11 @@ body{
     text-decoration: none;
     color: #b1b0ae;
 }
+.form-container #userNameNotFound{
+    color: red;
+    margin-top: 5px;
+}
+.form-container #passwordNotFound{
+    color: red;
+    margin-top: 5px;
+}

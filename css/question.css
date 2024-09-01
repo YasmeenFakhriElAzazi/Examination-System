@@ -81,12 +81,18 @@ body {
 }
 
 .answer {
+    cursor: pointer;
     color: #59564f;
     margin-top: 16px;
     padding: 8px 16px;
     border: 1px solid #2c363f;
     border-radius: 12px;
     background: linear-gradient(to right, #b9c2d1, #dce0e9, #e6e9ee);
+    transition: all 0.4s;    
+}
+.answer:hover {
+    color: white;
+    background: linear-gradient(to right, #405261, #475663, #2c363f);
 }
 
 .buttons {
@@ -96,6 +102,7 @@ body {
 }
 
 button {
+    cursor: pointer;
     border: 0;
     border-radius: 16px;
     padding: 8px 24px;
@@ -124,4 +131,12 @@ button {
     padding-top: 40px;
     padding-bottom: 16px;
     border-bottom: 1px solid #59564f;
+}
+.card{
+    cursor: pointer;
+    margin-top: 16px;
+    border-radius: 16px;
+    padding: 8px 24px;
+    background: linear-gradient(to right, #405261, #475663, #2c363f);
+    color: white;
 }

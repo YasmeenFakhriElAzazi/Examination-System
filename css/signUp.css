@@ -95,9 +95,10 @@ body{
         color: #9b9b99;
     }    
     .form-container #userNameFound,
-    .form-container #emailFound{
+    .form-container #emailFound ,
+    .form-container #passwordError,
+    .form-container #passwordConfirmaionError{
         color: red;
-        margin-top: 5px;
     }   
  
 
@@ -200,9 +201,10 @@ body{
         color: #9b9b99;
     }  
     .form-container #userNameFound,
-    .form-container #emailFound{
+    .form-container #emailFound ,
+    .form-container #passwordError,
+    .form-container #passwordConfirmaionError{
         color: red;
-        margin-top: 5px;
     }   
 
 }

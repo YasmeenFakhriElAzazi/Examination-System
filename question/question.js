@@ -274,7 +274,7 @@ let numbers;
 (function () {
 	const set = new Set();
 	while (set.size !== 10) {
-		set.add(Math.floor(Math.random() * 30) + 1);
+		set.add(Math.floor(Math.random() * 30));
 	}
 	numbers = [...set];
 	console.log(numbers);
@@ -290,7 +290,7 @@ let ansB = document.querySelector(".ansB")
 let ansC = document.querySelector(".ansC")
 let ansD = document.querySelector(".ansD")
 
-
+let choices = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 function page(i) {
 	queNum.textContent = `Question No.${j + 1}`
 	que.textContent = `${questions[numbers[i]].question}`
@@ -315,6 +315,9 @@ prevBtn.addEventListener("click", function () {
 	}
 })
 
+nextBtn.onclick = function() {rememberStyle()};
+prevBtn.onclick = function() {rememberStyle()};
+
 let flags = []
 const flaggedQues = document.querySelector(".ques-flagged");
 function addFlag (h){
@@ -336,10 +339,8 @@ flagBtn.addEventListener("click", function(){
 		index = flags.indexOf(j+1);
 		removeFlag(j)
 		delete flags[index];
-		console.log(flags);
 	}else{
 		flags.push(j+1);
-		console.log(flags);
 		addFlag(j)
 	}
 })
@@ -349,15 +350,75 @@ function getPage (g){
 	page(j);
 }
 
-// let clock = document.querySelector(".countdown")
-// let minsTime = 10;
-// let currentTime = Date.parse(new Date());
-// let deadline = new Date(currentTime + minsTime * 60 * 1000)
-// console.log(deadline)
 
-// function remainTime() {
+function markAnswer(choice){
+	if(choice=="a"){
+		choices[j]=questions[numbers[j]].firstChoice;
+	}
+	else if(choice=="b"){
+		choices[j]=questions[numbers[j]].secondChoice;
+	}
+	else if(choice=="c"){
+		choices[j]=questions[numbers[j]].thirdChoice;
+	}
+	else if(choice=="d"){
+		choices[j]=questions[numbers[j]].fourthChoice;
+	}
+	console.log(choices);
+}
 
-// }
-// function timer() {
+function changeStyle(cont){
+	ansA.classList.remove("clicked")
+	ansB.classList.remove("clicked")
+	ansC.classList.remove("clicked")
+	ansD.classList.remove("clicked")
+	cont.classList.add("clicked") 
+}
 
-// }
+function rememberStyle(){
+	ansA.classList.remove("clicked")
+	ansB.classList.remove("clicked")
+	ansC.classList.remove("clicked")
+	ansD.classList.remove("clicked")
+	if(choices[j]==questions[numbers[j]].firstChoice){
+		ansA.classList.add("clicked")
+	}
+	else if(choices[j]==questions[numbers[j]].secondChoice){
+		ansB.classList.add("clicked")
+	}
+	else if(choices[j]==questions[numbers[j]].thirdChoice){
+		ansC.classList.add("clicked")
+	}
+	else if(choices[j]==questions[numbers[j]].fourthChoice){
+		ansD.classList.add("clicked")
+	}
+}
+
+ansA.onclick = function() {markAnswer("a"); changeStyle(ansA)};
+ansB.onclick = function() {markAnswer("b"); changeStyle(ansB)};
+ansC.onclick = function() {markAnswer("c"); changeStyle(ansC)};
+ansD.onclick = function() {markAnswer("d"); changeStyle(ansD)};
+
+function calculateMarks(){
+	let marks=0
+	for(m=0;m<numbers.length;m++){
+		if (choices[m]==questions[numbers[m]].correctAnswer){
+			marks++
+		}
+	}
+	console.log(marks)
+	if(marks==10){
+
+	}
+	else if(marks < 10){
+
+	}
+}
+
+let submit = document.querySelector(".submit")
+submit.onclick = function() {calculateMarks()}
+
+// setInterval(function(){
+// 	window.location.reload();
+// 	window.stop()
+// }, 100)

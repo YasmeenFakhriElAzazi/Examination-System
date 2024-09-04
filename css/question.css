@@ -140,3 +140,23 @@ button {
     background: linear-gradient(to right, #405261, #475663, #2c363f);
     color: white;
 }
+.submit{
+    margin-top: 40px;
+    background: linear-gradient(to right, #b9c2d1, #dce0e9, #e6e9ee);
+    border: 2px solid #2c363f;
+    color: #2c363f;
+    font-weight: bold;
+    font-size: 18px;
+}
+.ques-flagged{
+    padding-bottom: 16px;
+    border-bottom: 1px solid #59564f;
+}
+.answer:has(.clicked){
+    cursor: pointer;
+    margin-top: 16px;
+    padding: 8px 16px;
+    border-radius: 12px;
+    color: white;
+    background: linear-gradient(to right, #405261, #475663, #2c363f);
+}

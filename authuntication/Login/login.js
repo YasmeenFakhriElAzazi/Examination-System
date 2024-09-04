@@ -31,7 +31,7 @@ loginButton.onclick = function(){
            // console.log('founded');
         }
         else{
-            passwordNotFound.textContent = "Password is not exist";
+            passwordNotFound.textContent = "Password does not exist";
 
         }
         

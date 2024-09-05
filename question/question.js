@@ -289,6 +289,11 @@ let ansA = document.querySelector(".ansA")
 let ansB = document.querySelector(".ansB")
 let ansC = document.querySelector(".ansC")
 let ansD = document.querySelector(".ansD")
+let countdown = document.querySelector(".countdown")
+let counterContainer = document.querySelector(".counter-container")
+let submit = document.querySelector(".submit")
+let clock = document.querySelector('#clock')
+const timerDisplay = document.querySelector('.time');
 
 let choices = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 function page(i) {
@@ -299,19 +304,34 @@ function page(i) {
 	ansC.textContent = `${questions[numbers[i]].thirdChoice}`
 	ansD.textContent = `${questions[numbers[i]].fourthChoice}`
 };
+let widthOfSub  = counterContainer.clientWidth *0.1 ;
+console.log(widthOfSub);
+
 
 let j = 0;
 page(j);
 nextBtn.addEventListener("click", function () {
+	let width  = countdown.clientWidth ;
+
 	if (j < 9) {
 		j++;
 		page(j);
+		console.log(width + widthOfSub);
+		
 	}
+	countdown.style.width = `${width + widthOfSub}px`
+
+	//countdown.style.width = `${width + widthOfSub}%` ;
+
 })
 prevBtn.addEventListener("click", function () {
+	let width  = countdown.clientWidth ;
+
 	if (j > 0) {
 		j--;
 		page(j);
+		countdown.style.width = `${width - widthOfSub}px`
+
 	}
 })
 
@@ -415,8 +435,42 @@ function calculateMarks(){
 	}
 }
 
-let submit = document.querySelector(".submit")
 submit.onclick = function() {calculateMarks()}
+///////////////////////////////////////////////////////////////////////
+/// timer 
+
+let countTime;
+const endTime = Date.now() + 60000; // 1 minute from now
+
+function displayTimeLeft(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainderSeconds = seconds % 60;
+    const display = `${minutes < 10 ? '0' : ''}${minutes}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
+    timerDisplay.textContent = display;
+}
+
+function timer(seconds) {
+    const now = Date.now();
+    const then = now + seconds * 1000;
+    displayTimeLeft(seconds);
+
+    countTime = setInterval(() => {
+        const secondsLeft = Math.round((then - Date.now()) / 1000);
+		if(secondsLeft <= 10){
+			clock.style.color = 'red' ;
+			timerDisplay.style.color ='red'
+
+		}
+		if (secondsLeft <= 0) {
+            clearInterval(countTime);
+            window.location.href = '../Result/timerOut.html'; // Redirect to another page
+            return;
+        }
+        displayTimeLeft(secondsLeft);
+    }, 1000);
+}
+
+timer(60); // Start the timer for 60 seconds
 
 // setInterval(function(){
 // 	window.location.reload();

@@ -463,16 +463,17 @@ function timer(seconds) {
 		}
 		if (secondsLeft <= 0) {
             clearInterval(countTime);
-            window.location.href = '../Result/timerOut.html'; // Redirect to another page
+			console.log("hello")
+            window.location.replace('../Result/timerOut.html'); // Redirect to another page
             return;
         }
         displayTimeLeft(secondsLeft);
     }, 1000);
 }
 
-timer(60); // Start the timer for 60 seconds
+timer(10); // Start the timer for 60 seconds
 
-setInterval(function(){
-	window.location.reload();
-	window.stop()
-}, 100)
+// setInterval(function(){
+// 	window.location.reload();
+// 	window.stop();
+// }, 100)

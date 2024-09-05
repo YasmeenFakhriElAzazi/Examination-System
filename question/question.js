@@ -428,10 +428,10 @@ function calculateMarks(){
 	}
 	console.log(marks)
 	if(marks==10){
-
+		window.location.replace("../Result/fullMark.html")
 	}
 	else if(marks < 10){
-
+		window.location.replace("../Result/degree.html")
 	}
 }
 
@@ -472,7 +472,7 @@ function timer(seconds) {
 
 timer(60); // Start the timer for 60 seconds
 
-// setInterval(function(){
-// 	window.location.reload();
-// 	window.stop()
-// }, 100)
+setInterval(function(){
+	window.location.reload();
+	window.stop()
+}, 100)

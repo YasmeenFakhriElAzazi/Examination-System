@@ -271,14 +271,14 @@ const questions = [
 	}
 ];
 let numbers;
-(function () {
+function randomNumbers () {
 	const set = new Set();
 	while (set.size !== 10) {
 		set.add(Math.floor(Math.random() * 30));
 	}
 	numbers = [...set];
 	console.log(numbers);
-})();
+};
 
 let nextBtn = document.querySelector(".next");
 let prevBtn = document.querySelector(".prev");

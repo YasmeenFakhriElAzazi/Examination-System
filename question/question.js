@@ -270,15 +270,11 @@ const questions = [
 		"correctAnswer": "Titanium"
 	}
 ];
-let numbers;
-function randomNumbers () {
-	const set = new Set();
-	while (set.size !== 10) {
-		set.add(Math.floor(Math.random() * 30));
-	}
-	numbers = [...set];
-	console.log(numbers);
-};
+let input = localStorage.getItem('numbersArray')
+console.log(input);
+numbers = JSON.parse(input)
+console.log(numbers);
+
 
 let nextBtn = document.querySelector(".next");
 let prevBtn = document.querySelector(".prev");
@@ -430,10 +426,10 @@ function calculateMarks(){
 	localStorage.setItem('mark', JSON.stringify(marks));
 	console.log(marks)
 	if(marks==10){
-		window.location.href = '../Result/fullMark.html'; // Redirect to another page
+		window.location.replace('../Result/fullMark.html'); // Redirect to another page
 	}
-	else if(marks < 10 && marks > 0){
-		window.location.href = '../Result/degree.html'; // Redirect to another page
+	else if(marks < 10 && marks >= 0){
+		window.location.replace('../Result/degree.html'); // Redirect to another page
 	}
 }
 
@@ -473,7 +469,7 @@ function timer(seconds) {
     }, 1000);
 }
 
-timer(10); // Start the timer for 60 seconds
+timer(60); // Start the timer for 60 seconds
 
 // setInterval(function(){
 // 	window.location.reload();

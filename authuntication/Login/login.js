@@ -16,8 +16,13 @@ loginButton.onclick = function(){
         //nameOfUser.textContent = "fffffff" ;
 
         if(users.find(user  => user.password === password.value)){
-            window.location.href = '../../welcome/welcome.html';
-                        
+            const set = new Set();
+	        while (set.size !== 10) {
+		        set.add(Math.floor(Math.random() * 30));
+	        }
+	        numbers = [...set];
+            localStorage.setItem('numbersArray',JSON.stringify(numbers))
+            window.location.replace('../../welcome/welcome.html');
         }
         else{
             passwordNotFound.textContent = "Password does not exist";

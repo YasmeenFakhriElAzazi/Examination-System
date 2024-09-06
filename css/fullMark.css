@@ -35,7 +35,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 2%;
+    gap: 10%;
     color: #2c363f;
     z-index: 1;
 

@@ -10,6 +10,9 @@ let passwordError = document.querySelector('#passwordError');
 let passwordConfirmationError = document.querySelector('#passwordConfirmaionError');
 let nameOfUserSign  = document.querySelector('#nameOfUser')
 
+document.querySelector(".haveAccount").addEventListener("click", function(){
+    window.location.replace('../login/login.html')
+})
 
 // Local database
 let users;
@@ -97,8 +100,13 @@ submit.onclick = async function() {
         users.push(newUser);
         localStorage.setItem('user', JSON.stringify(users));
         nameOfUserSign.textContent = userName.value ;
-
-        // window.location.href = '../../welcome/welcome.html';
+        const set = new Set(); //get array of random numbers to determine questions
+	        while (set.size !== 10) {
+		        set.add(Math.floor(Math.random() * 30));
+	        }
+	        numbers = [...set];
+            localStorage.setItem('numbersArray',JSON.stringify(numbers))
+        window.location.replace('../../welcome/welcome.html');
     }
 
     console.log(users);

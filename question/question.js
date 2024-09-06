@@ -448,10 +448,10 @@ function displayTimeLeft(seconds) {
 }
 
 function timer(seconds) {
-    const now = Date.now();
+    const now = Number(localStorage.getItem('timeNow'));
+	console.log(typeof(now))
     const then = now + seconds * 1000;
     displayTimeLeft(seconds);
-
     countTime = setInterval(() => {
         const secondsLeft = Math.round((then - Date.now()) / 1000);
 		if(secondsLeft <= 10){
@@ -470,8 +470,3 @@ function timer(seconds) {
 }
 
 timer(60); // Start the timer for 60 seconds
-
-// setInterval(function(){
-// 	window.location.reload();
-// 	window.stop();
-// }, 100)

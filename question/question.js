@@ -420,17 +420,21 @@ ansC.onclick = function() {markAnswer("c"); changeStyle(ansC)};
 ansD.onclick = function() {markAnswer("d"); changeStyle(ansD)};
 
 function calculateMarks(){
-	let marks=0
+	let marks=0 ;
+
 	for(m=0;m<numbers.length;m++){
 		if (choices[m]==questions[numbers[m]].correctAnswer){
 			marks++
 		}
 	}
+	localStorage.setItem('mark', JSON.stringify(marks));
 	console.log(marks)
 	if(marks==10){
+		window.location.href = '../Result/fullMark.html'; // Redirect to another page
 
 	}
-	else if(marks < 10){
+	else if(marks < 10 && marks > 0){
+		window.location.href = '../Result/degree.html'; // Redirect to another page
 
 	}
 }
@@ -476,3 +480,4 @@ timer(60); // Start the timer for 60 seconds
 // 	window.location.reload();
 // 	window.stop()
 // }, 100)
+

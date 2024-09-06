@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+body{
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+.pic{
+    width: 60%;    
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+.pic img{   
+    height: 100%;
+    width: 100%;
+}
+.content{
+    width: 40%;
+    overflow: hidden;
+}
+#confetti{
+    position: relative;
+    top:0;
+    left: 0;
+    z-index: -1;
+}
+.text{
+    position: absolute;
+    margin-top: -56vh;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2%;
+    color: #2c363f;
+    z-index: 1;
+
+}
+.text h1{
+    font-size: 48px;
+}

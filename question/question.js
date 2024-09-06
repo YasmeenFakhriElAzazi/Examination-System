@@ -271,14 +271,14 @@ const questions = [
 	}
 ];
 let numbers;
-(function () {
+function randomNumbers () {
 	const set = new Set();
 	while (set.size !== 10) {
 		set.add(Math.floor(Math.random() * 30));
 	}
 	numbers = [...set];
 	console.log(numbers);
-})();
+};
 
 let nextBtn = document.querySelector(".next");
 let prevBtn = document.querySelector(".prev");
@@ -431,11 +431,9 @@ function calculateMarks(){
 	console.log(marks)
 	if(marks==10){
 		window.location.href = '../Result/fullMark.html'; // Redirect to another page
-
 	}
 	else if(marks < 10 && marks > 0){
 		window.location.href = '../Result/degree.html'; // Redirect to another page
-
 	}
 }
 
@@ -467,17 +465,17 @@ function timer(seconds) {
 		}
 		if (secondsLeft <= 0) {
             clearInterval(countTime);
-            window.location.href = '../Result/timerOut.html'; // Redirect to another page
+			console.log("hello")
+            window.location.replace('../Result/timerOut.html'); // Redirect to another page
             return;
         }
         displayTimeLeft(secondsLeft);
     }, 1000);
 }
 
-timer(60); // Start the timer for 60 seconds
+timer(10); // Start the timer for 60 seconds
 
 // setInterval(function(){
 // 	window.location.reload();
-// 	window.stop()
+// 	window.stop();
 // }, 100)
-

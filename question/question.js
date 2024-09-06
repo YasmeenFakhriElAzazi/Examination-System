@@ -270,11 +270,22 @@ const questions = [
 		"correctAnswer": "Titanium"
 	}
 ];
+
+
 let input = localStorage.getItem('numbersArray')
 console.log(input);
 numbers = JSON.parse(input)
 console.log(numbers);
 
+
+window.onload = function() {
+	const savedImage = localStorage.getItem('uploadedImage');
+	if (savedImage) {
+		document.querySelector('.personalImage').src = savedImage;
+	} else {
+		alert("No image found. Please upload an image first.");
+	}
+};
 
 let nextBtn = document.querySelector(".next");
 let prevBtn = document.querySelector(".prev");
@@ -428,7 +439,7 @@ function calculateMarks(){
 	if(marks==10){
 		window.location.replace('../Result/fullMark.html'); // Redirect to another page
 	}
-	else if(marks < 10 && marks >= 0){
+	else if(marks < 10 && marks > 0){
 		window.location.replace('../Result/degree.html'); // Redirect to another page
 	}
 }

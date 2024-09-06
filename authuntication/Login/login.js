@@ -15,10 +15,10 @@ if(localStorage.user != null){
 }
 
 loginButton.onclick = function(){
-    if(users.find(user  => user.userName === userName.value)){
+    if(usersl.find(user  => user.userName === userName.value)){
         //nameOfUser.textContent = "fffffff" ;
 
-        if(users.find(user  => user.password === password.value)){
+        if(usersl.find(user  => user.password === password.value)){
             const set = new Set(); //get array of random numbers to determine questions
 	        while (set.size !== 10) {
 		        set.add(Math.floor(Math.random() * 30));

@@ -1,3 +1,5 @@
+//localStorage.removeItem('user')
+
 let userName  = document.querySelector('#username');
 let email = document.querySelector('#email');
 let password = document.querySelector('#password');
@@ -11,6 +13,8 @@ let passwordConfirmationError = document.querySelector('#passwordConfirmaionErro
 let nameOfUserSign  = document.querySelector('#nameOfUser')
 let base64String ;
 const fileUploadInput = document.querySelector('.file-uploader');
+let currentUserId ;
+let currentUserName ;
 
 document.querySelector(".haveAccount").addEventListener("click", function(){
     window.location.replace('../login/login.html')
@@ -68,19 +72,90 @@ function validatePasswordConfirmation(input) {
   
 
 // Authentication
+// submit.onclick = async function() {
+//     emailFound.textContent = "";
+//     userNameFound.textContent = "";
+//     // passwordError.textContent = "";
+//     // passwordConfirmationError.textContent = "" ;
+
+//     // Validate inputs
+//     const isUserNameValid = validateUserName(userName);
+//     const isEmailValid = validateEmail(email);
+//     const isPasswordValid = validatePassword(password);
+//     const confermedPassword = validatePasswordConfirmation(confirmPassword)  ;
+
+ 
+//     // If any validation fails, stop the form submission
+//     if (!isUserNameValid || !isEmailValid || !isPasswordValid || !confermedPassword) {
+//         return;
+//     }
+//     let newUser = {
+//         id: users.length + 1,
+//         userName: userName.value,
+//         email: email.value,
+//         password: password.value,
+//         imagePath :''
+
+//     };
+
+//     const fileInput = document.getElementById('file-input');
+//     const file = fileInput.files[0];
+
+//     if (file) {
+//         const reader = new FileReader();
+//         reader.onload = function(e) {
+//             base64String = e.target.result; // Base64 string of the image
+//             newUser['imagePath']= base64String ;
+//             console.log(base64String);
+            
+    
+
+//         };
+//         reader.readAsDataURL(file); // Convert image to Base64
+//     } else {
+//         alert("Please select an image before submitting.");
+//     }
+   
+//     console.log(newUser.imagePath);
+    
+    
+//     if (users.find(user => user.userName === userName.value)) {
+//         userNameFound.textContent = "This User Name already exists";
+//     } else if (users.find(user => user.email === email.value)) {
+//         emailFound.textContent = "This Email already exists";
+//         console.log('Email found');
+//     } else {
+//         users.push(newUser);
+//         localStorage.setItem('user', JSON.stringify(users));
+//        // nameOfUserSign.textContent = userName.value ;
+//         const set = new Set(); //get array of random numbers to determine questions
+// 	        while (set.size !== 10) {
+// 		        set.add(Math.floor(Math.random() * 30));
+// 	        }
+// 	       let numbers = [...set];
+//             localStorage.setItem('numbersArray',JSON.stringify(numbers))
+
+//             //upload
+           
+
+//      window.location.replace('../../welcome/welcome.html');
+//     }
+
+
+//     console.log(users);
+// };
+
+//Authentication
 submit.onclick = async function() {
     emailFound.textContent = "";
     userNameFound.textContent = "";
-    // passwordError.textContent = "";
-    // passwordConfirmationError.textContent = "" ;
 
     // Validate inputs
     const isUserNameValid = validateUserName(userName);
     const isEmailValid = validateEmail(email);
     const isPasswordValid = validatePassword(password);
-    const confermedPassword = validatePasswordConfirmation(confirmPassword)  ;
+    const confermedPassword = validatePasswordConfirmation(confirmPassword);
 
- 
     // If any validation fails, stop the form submission
     if (!isUserNameValid || !isEmailValid || !isPasswordValid || !confermedPassword) {
         return;
@@ -92,124 +167,49 @@ submit.onclick = async function() {
     if (file) {
         const reader = new FileReader();
         reader.onload = function(e) {
-            base64String = e.target.result; // Base64 string of the image
+            base64String = e.target.result; 
 
-          
-    
+            let newUser = {
+                id: users.length + 1,
+                userName: userName.value,
+                email: email.value,
+                password: password.value,
+                imagePath: base64String // Set Base64 string of image
+            };
+            currentUserId =  newUser.id ; 
+            currentUserName = newUser.userName ;
+            console.log(currentUserId);
+            localStorage.setItem('currentUser' ,currentUserId )
+            localStorage.setItem('Name' ,currentUserName);
+            // Check if username or email already exists
+            if (users.find(user => user.userName === userName.value)) {
+                userNameFound.textContent = "This User Name already exists";
+            } else if (users.find(user => user.email === email.value)) {
+                emailFound.textContent = "This Email already exists";
+                console.log('Email found');
+            } else {
+                users.push(newUser);
+                localStorage.setItem('user', JSON.stringify(users));
 
+                const set = new Set(); // get array of random numbers to determine questions
+                while (set.size !== 10) {
+                    set.add(Math.floor(Math.random() * 30));
+                }
+                let numbers = [...set];
+                localStorage.setItem('numbersArray', JSON.stringify(numbers));
+
+                // Redirect to welcome page
+              window.location.replace('../../welcome/welcome.html');
+            }
+
+            console.log(newUser); // Log the newUser object to confirm
         };
+
         reader.readAsDataURL(file); // Convert image to Base64
     } else {
         alert("Please select an image before submitting.");
     }
-    let newUser = {
-        id: users.length + 1,
-        userName: userName.value,
-        email: email.value,
-        password: password.value,
-        imagePath : base64String
-
-    };
-    console.log(newUser.imagePath);
-    
-           
-    if (users.find(user => user.userName === userName.value)) {
-        userNameFound.textContent = "This User Name already exists";
-    } else if (users.find(user => user.email === email.value)) {
-        emailFound.textContent = "This Email already exists";
-        console.log('Email found');
-    } else {
-        users.push(newUser);
-        localStorage.setItem('user', JSON.stringify(users));
-       // nameOfUserSign.textContent = userName.value ;
-        const set = new Set(); //get array of random numbers to determine questions
-	        while (set.size !== 10) {
-		        set.add(Math.floor(Math.random() * 30));
-	        }
-	       let numbers = [...set];
-            localStorage.setItem('numbersArray',JSON.stringify(numbers))
-
-            //upload
-           
-
-       window.location.replace('../../welcome/welcome.html');
-    }
-
-
-    console.log(users);
 };
-
-//try
-
-// submit.onclick = async function() {
-//     emailFound.textContent = "";
-//     userNameFound.textContent = "";
-
-//     // Validate inputs
-//     const isUserNameValid = validateUserName(userName);
-//     const isEmailValid = validateEmail(email);
-//     const isPasswordValid = validatePassword(password);
-//     const confermedPassword = validatePasswordConfirmation(confirmPassword);
-
-//     // If any validation fails, stop the form submission
-//     if (!isUserNameValid || !isEmailValid || !isPasswordValid || !confermedPassword) {
-//         return;
-//     }
-
-//     const fileInput = document.getElementById('file-input');
-//     const file = fileInput.files[0];
-
-//     // Check for image upload
-//     if (file) {
-//         const reader = new FileReader();
-        
-//         reader.onload = function(e) {
-//             const base64String = e.target.result; // Base64 string of the image
-
-//             // Create the newUser object after the image is processed
-//             let newUser = {
-//                 id: users.length + 1,
-//                 userName: userName.value,
-//                 email: email.value,
-//                 password: password.value,
-//                 imagePath: base64String  // Add image as Base64 string
-//             };
-
-//             // Check if username or email already exists
-//             if (users.find(user => user.userName === userName.value)) {
-//                 userNameFound.textContent = "This User Name already exists";
-//             } else if (users.find(user => user.email === email.value)) {
-//                 emailFound.textContent = "This Email already exists";
-//                 console.log('Email found');
-//             } else {
-//                 // Add the new user to the users array
-//                 users.push(newUser);
-
-//                 // Save users array to localStorage
-//                 localStorage.setItem('user', JSON.stringify(users));
-
-//                 // Set random numbers for the exam (optional feature)
-//                 const set = new Set(); // get array of random numbers to determine questions
-//                 while (set.size !== 10) {
-//                     set.add(Math.floor(Math.random() * 30));
-//                 }
-//                 let numbers = [...set];
-//                 localStorage.setItem('numbersArray', JSON.stringify(numbers));
-
-//                 // Redirect to welcome page
-//                 window.location.replace('../../welcome/welcome.html');
-//             }
-
-//             console.log(users);  // Log the users array for debugging
-//         };
-
-//         // Start reading the image file as Base64
-//         reader.readAsDataURL(file);
-//     } else {
-//         alert("Please select an image before submitting.");
-//     }
-// };
-
 
 
 window.history.forward(); 

@@ -270,22 +270,71 @@ const questions = [
 		"correctAnswer": "Titanium"
 	}
 ];
-
-
 let input = localStorage.getItem('numbersArray')
 console.log(input);
 numbers = JSON.parse(input)
 console.log(numbers);
 
 
+//upload photo
+
 window.onload = function() {
-	const savedImage = localStorage.getItem('uploadedImage');
-	if (savedImage) {
-		document.querySelector('.personalImage').src = savedImage;
-	} else {
-		alert("No image found. Please upload an image first.");
+	
+let usersp ;
+
+if(localStorage.user != null){
+    usersp = JSON.parse(localStorage.user) ;
+}else{
+    usersp = [] ;
+}
+console.log(usersp);
+
+let userId = localStorage.getItem('currentUser')
+let name  = localStorage.getItem('Name') ;
+
+let UserName = document.querySelector('#nameOfUser')
+UserName.textContent = name ;
+	console.log(userId);
+	const currentUser = usersp.find(user => user.id == userId);
+
+	if(currentUser){
+
+		const savedImage = currentUser.imagePath;
+		console.log(savedImage);
+
+		if (savedImage) {
+			// Set the src attribute of the personalImage to the saved imagePath
+			document.querySelector('.personalImage').src = savedImage;
+			console.log(savedImage);
+			
+		} else {
+			alert("No image found. Please upload an image first.");
+		}
 	}
+
+	// // Retrieve the 'user' data from localStorage
+	// const userData = localStorage.getItem('user');
+	// console.log(userData);
+	
+	// if (userData) {
+	// 	// Parse the userData if it's in JSON format
+	// 	const user = JSON.parse(userData);
+
+	// 	// Check if the imagePath is available
+	// 	const savedImage = user.imagePath;
+	// 	console.log(savedImage);
+		
+	// 	if (savedImage) {
+	// 		// Set the src attribute of the personalImage to the saved imagePath
+	// 		document.querySelector('.personalImage').src = savedImage;
+	// 	} else {
+	// 		alert("No image found. Please upload an image first.");
+	// 	}
+	// } else {
+	// 	alert("No user data found.");
+	// }
 };
+
 
 let nextBtn = document.querySelector(".next");
 let prevBtn = document.querySelector(".prev");
@@ -481,3 +530,10 @@ function timer(seconds) {
 }
 
 timer(60); // Start the timer for 60 seconds
+
+
+
+window.history.forward(); 
+function noBack() { 
+    window.history.forward(); 
+}

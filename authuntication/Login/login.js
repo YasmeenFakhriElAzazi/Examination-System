@@ -15,17 +15,24 @@ if(localStorage.user != null){
 }
 
 loginButton.onclick = function(){
-    if(usersl.find(user  => user.userName === userName.value)){
+    let User = usersl.find(user  => user.userName === userName.value)
+    if(User){
         //nameOfUser.textContent = "fffffff" ;
-
+     
+        
         if(usersl.find(user  => user.password === password.value)){
+            console.log(User);
+
+            localStorage.setItem('currentUser' , User.id )
+            localStorage.setItem('Name' ,User.userName);
+
             const set = new Set(); //get array of random numbers to determine questions
 	        while (set.size !== 10) {
 		        set.add(Math.floor(Math.random() * 30));
 	        }
 	        numbers = [...set];
             localStorage.setItem('numbersArray',JSON.stringify(numbers))
-            window.location.replace('../../welcome/welcome.html');
+           window.location.replace('../../welcome/welcome.html');
         }
         else{
             passwordNotFound.textContent = "Password does not exist";

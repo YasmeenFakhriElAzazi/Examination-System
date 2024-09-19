@@ -47,8 +47,11 @@ git clone https://github.com/yourusername/examination-system.git
 
 # Technologies Used
 . HTML/CSS/JavaScript: For the user interface and core functionality.
+
 . Local Storage: To store user data securely and manage registrations.
+
 . FileReader API: For handling profile picture uploads.
+
 . JSON: Used for storing and retrieving exam questions.
 
 # Contributing
